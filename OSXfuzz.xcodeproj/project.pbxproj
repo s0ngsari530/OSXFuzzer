@@ -25,6 +25,9 @@
 /* Begin PBXFileReference section */
 		43613DFA1F74091A0019F811 /* OSXfuzz */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OSXfuzz; sourceTree = BUILT_PRODUCTS_DIR; };
 		43613DFD1F74091A0019F811 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		43613E071F740BBC0019F811 /* parsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parsing.h; sourceTree = "<group>"; };
+		43613E081F743B0E0019F811 /* fuzz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fuzz.h; sourceTree = "<group>"; };
+		43613E091F743B8B0019F811 /* define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				43613DFD1F74091A0019F811 /* main.cpp */,
+				43613E071F740BBC0019F811 /* parsing.h */,
+				43613E081F743B0E0019F811 /* fuzz.h */,
+				43613E091F743B8B0019F811 /* define.h */,
 			);
 			path = OSXfuzz;
 			sourceTree = "<group>";

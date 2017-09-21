@@ -6,10 +6,28 @@
 //  Copyright © 2017년 송상준. All rights reserved.
 //
 
-#include <iostream>
+
+#include "parsing.h"
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    char *pData;
+    char *ptr;
+    char *pService[8192];
+    int i = 0;
+    pData = parsing_main();
+    
+    // parsing kextstat result
+    ptr = strtok(pData,"\n");
+    while (ptr != NULL)
+    {
+        pService[i] = ptr;
+        ptr = strtok(NULL, "\n");
+        i++;
+    }
+    
+    
+    
     return 0;
+    
 }
