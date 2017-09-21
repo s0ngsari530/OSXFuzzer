@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		43613DFE1F74091A0019F811 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43613DFD1F74091A0019F811 /* main.cpp */; };
+		43B108E71F744AE1001B9B3A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B108E61F744AE1001B9B3A /* IOKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		43B108E91F744B03001B9B3A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B108E81F744B03001B9B3A /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,8 @@
 		43613E071F740BBC0019F811 /* parsing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = parsing.h; sourceTree = "<group>"; };
 		43613E081F743B0E0019F811 /* fuzz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fuzz.h; sourceTree = "<group>"; };
 		43613E091F743B8B0019F811 /* define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = define.h; sourceTree = "<group>"; };
+		43B108E61F744AE1001B9B3A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		43B108E81F744B03001B9B3A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B108E91F744B03001B9B3A /* CoreFoundation.framework in Frameworks */,
+				43B108E71F744AE1001B9B3A /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,7 @@
 			children = (
 				43613DFC1F74091A0019F811 /* OSXfuzz */,
 				43613DFB1F74091A0019F811 /* Products */,
+				43B108E51F744AE1001B9B3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +73,15 @@
 				43613E091F743B8B0019F811 /* define.h */,
 			);
 			path = OSXfuzz;
+			sourceTree = "<group>";
+		};
+		43B108E51F744AE1001B9B3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43B108E81F744B03001B9B3A /* CoreFoundation.framework */,
+				43B108E61F744AE1001B9B3A /* IOKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +277,7 @@
 				43613E031F74091A0019F811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

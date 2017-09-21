@@ -8,9 +8,11 @@
 
 
 #include "parsing.h"
-
+#include "fuzz.h"
 
 int main(int argc, const char * argv[]) {
+    kern_return_t err;
+    
     char *pData;
     char *ptr;
     char *pService[8192];
@@ -25,9 +27,11 @@ int main(int argc, const char * argv[]) {
         ptr = strtok(NULL, "\n");
         i++;
     }
+
     
-    
-    
+    userclient_fuzz(pService[21]);
+
+
     return 0;
     
 }
