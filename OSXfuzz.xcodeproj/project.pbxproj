@@ -99,6 +99,7 @@
 				TargetAttributes = {
 					43613DF91F7409190019F811 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 8L25D39TNE;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -224,14 +225,20 @@
 		43613E021F74091A0019F811 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 8L25D39TNE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
 		43613E031F74091A0019F811 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = 8L25D39TNE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
