@@ -12,4 +12,4 @@
 
 #endif /* fuzz_h */
 
-#include "defind.h"
+#include "define.h"
