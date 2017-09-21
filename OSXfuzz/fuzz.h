@@ -80,9 +80,10 @@ int userclient_fuzz(char *name) {
     
     for(i=0;i<2147483647;i++) {
         matchingClass = IOServiceMatching(name);
+        printf("%s\n",name);
         if(matchingClass == NULL){
             printf("[-] Error call to IOServiceMatching()\n");
-            exit(1);
+            return 0;
         }
         printf("[+] IOServiceMatching() Success\n");
         
@@ -90,14 +91,14 @@ int userclient_fuzz(char *name) {
         err = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingClass, &iterator);
         if (err != KERN_SUCCESS){
             printf("[-] Error call to IOServiceGetMatchingServices()\n");
-            exit(1);
+            return 0;
         }
         printf("[+] IOServiceGetMatchingServices() Success\n");
         
         service = IOIteratorNext(iterator);
         if (service == IO_OBJECT_NULL){
             printf("[-] Error call to IOIteratorNext()\n");
-            exit(1);
+            return 0;
         }
         printf("[+] IOIteratorNext() Success\n");
         

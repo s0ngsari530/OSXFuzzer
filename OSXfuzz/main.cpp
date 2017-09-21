@@ -28,9 +28,9 @@ int main(int argc, const char * argv[]) {
         i++;
     }
 
-    
-    userclient_fuzz(pService[21]);
-
+    for(i=0;i<200;i++) {
+        userclient_fuzz(pService[i]);
+    }
 
     return 0;
     
