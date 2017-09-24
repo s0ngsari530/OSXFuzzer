@@ -20,12 +20,17 @@ int main(int argc,char *argv[]) {
     char *pService[8192];
     int i = 0;
     int select;
+    unsigned int fuzz_arg;
     pData = parsing_main();
     
     
     if(argc < 2) {
         help();
         exit(0);
+    }
+    
+    if(argv[2] != NULL) {
+        fuzz_arg = atoi(argv[2]);
     }
     // parsing kextstat result
     ptr = strtok(pData,"\n");
@@ -39,10 +44,13 @@ int main(int argc,char *argv[]) {
     select = atoi(argv[1]);
     
     switch(select) {
-            
         case 0: //newUserClient argument fuzz
+            if(fuzz_arg == NULL) {
+                help();
+                exit(1);
+            }
             for(i=0;i<200;i++) {
-                userclient_fuzz(pService[i]);
+                userclient_fuzz(pService[i],fuzz_arg);
             }
             break;
             
@@ -61,9 +69,9 @@ int main(int argc,char *argv[]) {
 
 
 void help() {
-    printf("usage: OSXfuzz [Type]\n");
-    printf("Type:           0 : newUserClient Fuzz\n");
-    printf("                1 : IOConnectCall Fuzz\n");
+    printf("usage: OSXfuzz [Type] [fuzz Argument]\n");
+    printf("Type:           0 100 : newUserClient Fuzz argument with 100\n");
+    printf("                1     : IOConnectCall Fuzz\n");
 
     
 }

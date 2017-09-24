@@ -32,6 +32,43 @@ uint32_t outputScalarCnt = 0;
 char outputStruct[4096] = {0};
 size_t outputStructCnt = 0;
 
+int fuzz_scalar(char *name) {
+    io_iterator_t iterator;
+    kern_return_t err;
+    io_connect_t con = MACH_PORT_NULL;
+    CFMutableDictionaryRef matchingClass;
+    io_service_t service;
+    
+    matchingClass = IOServiceMatching(name);
+    if(matchingClass == NULL){
+        printf("[-] Error call to IOServiceMatching()\n");
+        exit(1);
+    }
+    printf("[+] IOServiceMatching() Success\n");
+    
+    err = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingClass, &iterator);
+    if (err != KERN_SUCCESS){
+        printf("[-] Error call to IOServiceGetMatchingServices()\n");
+        exit(1);
+    }
+    printf("[+] IOServiceGetMatchingServices() Success\n");
+    
+    service = IOIteratorNext(iterator);
+    if (service == IO_OBJECT_NULL){
+        printf("[-] Error call to IOIteratorNext()\n");
+        exit(1);
+    }
+    printf("[+] IOIteratorNext() Success\n");
+    
+    err = IOServiceOpen(service, mach_task_self(), 0, &con);
+    if(err == KERN_SUCCESS){
+        printf("[+] IOServiceOpen() Success\n");
+    }
+    
+    
+    return err;
+}
+
 
 int get_client(char *name) {
     io_iterator_t iterator;
@@ -70,15 +107,18 @@ int get_client(char *name) {
 }
 
 
-int userclient_fuzz(char *name) {
+int userclient_fuzz(char *name,unsigned int fuzz_arg) {
     io_iterator_t iterator;
     kern_return_t err;
     io_connect_t con = MACH_PORT_NULL;
     CFMutableDictionaryRef matchingClass;
     io_service_t service;
     int i;
-    
-    for(i=0;i<2147483647;i++) {
+    if(name == NULL) {
+        printf("Services's not found\n");
+        exit(1);
+    }
+    for(i=0;i<fuzz_arg;i++) {
         matchingClass = IOServiceMatching(name);
         printf("%s\n",name);
         if(matchingClass == NULL){
