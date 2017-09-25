@@ -38,6 +38,7 @@ int fuzz_scalar(char *name) {
     io_connect_t con = MACH_PORT_NULL;
     CFMutableDictionaryRef matchingClass;
     io_service_t service;
+    int i;
     
     matchingClass = IOServiceMatching(name);
     if(matchingClass == NULL){
@@ -65,7 +66,23 @@ int fuzz_scalar(char *name) {
         printf("[+] IOServiceOpen() Success\n");
     }
     
-    
+    else if(err == KERN_FAILURE) {
+        printf("[-] IOServiceOPen() Failed\n");
+        return 0;
+    }
+    for(i=0;i<0x7000;i++) {
+        IOConnectCallMethod(con,
+                            i,
+                            inputScalar,
+                            inputScalarCnt,
+                            inputStruct,
+                            inputStructCnt,
+                            outputScalar,
+                            outputScalarCnt,
+                            outputStruct,
+                            outputStructCnt);
+        //TODO
+    }
     return err;
 }
 
